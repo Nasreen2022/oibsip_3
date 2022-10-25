@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature onverter</title>
+    <link rel="stylesheet" href="./task3.css">
+</head>
+<body>
+    <div class="tc">
+        <h1>Convert Temperature</h1>
+        <form action="" name="Form">
+            <div class="tc_2">
+                <div class="tc_input">
+                    <div class="value">
+                        <label for="">Value to Convert</label>
+                        <input type="text" name="value" id="In_val" placeholder="0">
+                    </div>
+                    <div class="input">
+                        <label for=""> From </label>
+                        <select name="input" id="input">
+                            <option value="Celsius">Celsius(C)</option>
+                            <option value="Fahrenheit">Fahrenheit(F)</option>
+                        </select>
+                    </div>
+                    <div class="output">
+                        <label for=""> To </label>
+                        <select name="output" id="output">
+                            <option value="Celsius">Celsius(C)</option>
+                            <option value="Fahrenheit">Fahrenheit(F)</option>
+                        </select>
+                    </div>      
+                </div>
+                <div class="btn">
+                    <button type="button" id="clr" class="clr_btn" onclick="reset()">Clear</button>
+                <button type="button" id="con" class="con_btn" ondblclick="ConvertTemparature()">Convert</button>
+                </div>
+                <div class="result">
+                    <label for="">Answer</label>
+                    <input type="text" id="result">
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Java Script  -->
+    <script>
+        function ConvertTemparature(){
+            let val = document.getElementById("In_val");
+            let result = document.getElementById("result");
+            let input = document.getElementById("input");
+            let output = document.getElementById("output");
+            // // fahrenheit to celsius
+            // let C = (((val-32)*5)/9);
+            // // console.log(C);
+            // document.getElementById("result").value = C;
+            val.addEventListener("keyup",ConvertTemparature);
+            input.addEventListener("Change",ConvertTemparature);
+            output.addEventListener("Change",ConvertTemparature);
+
+            let inVal = input.value;
+            let oVal = output.value;
+
+            // COnditions for celsius............
+            if(inVal==="Celsius" && oVal==="Fahrenheit"){
+                result.value = Number((val.value)*9/5)+32;
+            }else if(inVal==="Celsius" && oVal==="Celsius"){
+                result.value=val.value;
+            }
+            // Coditions for Fahrenheit...........
+            if(inVal==="Fahrenheit" && oVal==="Celsius"){
+                result.value = Number((val.value-35)*5)/9;
+            }else if(inVal==="Fahrenheit" && oVal==="Fahrenheit"){
+                result.value=val.value;
+            }
+        }
+
+        // reset .............
+        function reset(){
+            ConvertTemparature();
+        }
+    </script>
+</body>
+</html>
